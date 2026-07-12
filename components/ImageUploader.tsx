@@ -46,7 +46,6 @@ export function ImageUploader({
         ref={inputRef}
         type="file"
         accept="image/*"
-        capture="environment"
         className="hidden"
         onChange={(e) => {
           const file = e.target.files?.[0];
@@ -56,7 +55,12 @@ export function ImageUploader({
 
       {value ? (
         <div className="relative aspect-square w-32 overflow-hidden rounded-xl bg-cream-200">
-          <Image src={value} alt="Mahsulot rasmi" fill className="object-cover" />
+          <Image
+            src={value}
+            alt="Mahsulot rasmi"
+            fill
+            className="object-cover"
+          />
           <button
             type="button"
             onClick={() => onChange(null)}
