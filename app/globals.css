@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-cream-100 text-espresso-900 font-body antialiased;
+  }
+  ::selection {
+    @apply bg-amber-400/40;
+  }
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .smooth-enter {
+    animation: smooth-enter 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .smooth-rise {
+    animation: smooth-rise 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .stagger-list > * {
+    animation: smooth-rise 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .stagger-list > *:nth-child(2) {
+    animation-delay: 35ms;
+  }
+
+  .stagger-list > *:nth-child(3) {
+    animation-delay: 70ms;
+  }
+
+  .stagger-list > *:nth-child(4) {
+    animation-delay: 105ms;
+  }
+
+  .stagger-list > *:nth-child(5) {
+    animation-delay: 140ms;
+  }
+
+  .stagger-list > *:nth-child(n + 6) {
+    animation-delay: 175ms;
+  }
+
+  .interactive-lift {
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .interactive-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .interactive-lift:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Chek (receipt) yuqori qismidagi perforatsiya effekti */
+  .receipt-edge {
+    background-image: radial-gradient(
+      circle at 10px 0,
+      transparent 6px,
+      #faf6f0 6.5px
+    );
+    background-size: 20px 12px;
+    background-repeat: repeat-x;
+    background-position: top;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .dashed-divider {
+    background-image: linear-gradient(
+      to right,
+      #c9b8a3 0,
+      #c9b8a3 6px,
+      transparent 6px,
+      transparent 12px
+    );
+    background-size: 12px 1.5px;
+    background-repeat: repeat-x;
+    height: 1.5px;
+  }
+}
+
+@keyframes smooth-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes smooth-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
